@@ -1,0 +1,146 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Kanit', sans-serif;
+    color: #ffffff;
+}
+
+.video-container {
+    position: relative;
+    width: 100%;
+    height: 95vh; /* Adjust this value to fit the video section size */
+    overflow: hidden;
+    z-index: 1; /* Ensures video layer is below the content */
+    padding-top: 50px;
+}
+
+#headerVideo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the video covers the whole area */
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5); /* Dark overlay for better text visibility */
+    z-index: 2;
+}
+
+.content-container {
+    position: absolute;
+    top: 50%; /* Keep centered vertically */
+    left: 60%; /* Move towards the right side of the screen, adjust as necessary */
+    transform: translate(-30%, -50%); /* Adjust horizontal centering based on the left property */
+    text-align: left; /* Align text to the left */
+    z-index: 3; /* Above video and overlay */
+    color: #fff; /* Text color */
+    pointer-events: none; /* Ensures that mouse events pass through the text to the video below */
+}
+
+.navbar {
+    width: 100%;
+    background-color: #03050A; /* Adjust the color to match your theme */
+    overflow: hidden;
+    position: fixed; /* Fixed at the top */
+    top: 0;
+    z-index: 999; /* Ensures the navbar stays above all other content */
+}
+
+.nav-container {
+    display: flex;
+    justify-content: center; /* Center the navigation links */
+    align-items: center;
+    padding: 5px 10px; /* Add padding for spacing */
+}
+
+.nav-link {
+    text-decoration: none;
+    padding: 10px 15px;
+    color: #ffffff;
+    margin: 0 10px;
+    transition: background-color 0.3s, color 0.3s;
+    border-radius: 5px;
+}
+
+.nav-link:hover {
+    background-color: #006494; /* Color for hover state */
+    color: #ffffff;
+}
+
+h1 {
+    font-size: 4rem; /* Large text for the main title */
+}
+
+h2 {
+    font-size: 2rem; /* Subtitle size */
+}
+
+main {
+    flex: 1;
+    width: 100%;
+    overflow: auto; /* Allows content to scroll */
+}
+
+.projects-card {
+    display: block;
+    position: absolute;
+    left: 15%; /* Adjust as needed to place the card on the left */
+    top: 60%; /* Adjust as needed based on your layout */
+    transform: translateY(-50%); /* Adjust vertical alignment */
+    background-color: #fff; /* Card background color */
+    color: #03050A; /* Text color */
+    text-decoration: none; /* Remove underline from the link */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Card shadow for depth */
+    border-radius: 8px; /* Rounded corners for the card */
+    width: 250px; /* Card width */
+    padding: 20px; /* Card padding */
+    z-index: 2; /* Ensure it's above the background but below the content */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for hover */
+}
+
+.projects-card:hover {
+    transform: translateY(-50%) scale(1.05); /* Slightly scale up on hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Increase shadow on hover */
+    color: #03050A;
+}
+
+.card-content h3 {
+    margin: 0;
+    color: #03050A; /* Title color */
+    font-size: 1.5rem; /* Title size */
+}
+
+.card-content p {
+    color: #03050A; /* Text color */
+}
+
+
+footer {
+    background-color: #006494;
+    height: 5%; /* Footer height */
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative; /* Stay at the end of the content */
+}
+
+footer a {
+    color: #ffffff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+footer a:hover {
+    color: #03050A;
+}
