@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Contact Me</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://fonts.googleapis.com" rel="preconnect">
+        <link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
+        <link href="https://fonts.googleapis.com/css2?family=Kanit&display=swap" rel="stylesheet">
+        <link href="{{ url_for('static', filename='css/contact.css') }}" rel="stylesheet">
+    </head>
+    <body>
+        <nav class="navbar">
+            <div class="nav-container">
+                <a class="nav-link" href="/">Home</a>
+                <a class="nav-link" href="/projects">My Projects</a>
+                <a class="nav-link" href="/contact">Contact</a>
+            </div>
+        </nav>
+    
+        <div class="video-container" id="videoHeader">
+            <video autoplay id="headerVideo" loop muted playsinline>
+                <source src="{{ url_for('static', filename='media/earth.mp4') }}" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <div class="video-overlay"></div>
+        </div>
+        
+        <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    </body>
+
+    <footer>
+        <p>
+            <a href="https://www.linkedin.com/in/denes-kosztyuk-766889198/" target="_blank">LinkedIn</a> |
+            <a href="https://github.com/deneskosztyuk" target="_blank">GitHub</a> |
+            <a href="https://leetcode.com/nislaav/" target="_blank">LeetCode</a>
+        </p>
+    </footer>
+</html>
