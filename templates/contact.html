@@ -3,14 +3,13 @@
     <head>
         <meta charset="utf-8">
         <title>Contact Me</title>
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="https://fonts.googleapis.com" rel="preconnect">
         <link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
         <link href="https://fonts.googleapis.com/css2?family=Kanit&display=swap" rel="stylesheet">
         <link href="{{ url_for('static', filename='css/contact.css') }}" rel="stylesheet">
     </head>
+
     <body>
         <nav class="navbar">
             <div class="nav-container">
@@ -27,6 +26,13 @@
             </video>
             <div class="video-overlay"></div>
         </div>
+
+        <form method="POST" action="{{ url_for('contact') }}">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <textarea name="message" placeholder="Your Message" required></textarea>
+            <input type="submit" value="Submit">
+        </form>
         
         <script src="{{ url_for('static', filename='js/main.js') }}"></script>
     </body>

@@ -7,6 +7,8 @@
         <link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
         <link href="https://fonts.googleapis.com/css2?family=Kanit&display=swap" rel="stylesheet">
         <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
     </head>
     <body>
 
@@ -27,11 +29,11 @@
     </div>
 
     <main>
-
         <div class="content-container">
             <h1>Denes Kosztyuk</h1>
             <h2>Computer Systems & Robotics Engineer</h2>
-            <p>Welcome to my professional portfolio website.</p>
+            <p>Welcome to my web portfolio.</p>
+            <p>Which is fully powered with Python(Flask)</p>
         </div>
 
         <a class="projects-card" href="projects.html">
@@ -42,14 +44,6 @@
                 <!-- <img src="path_to_image" alt="Projects"> -->
             </div>
         </a>
-        <div class="w3-card-4">
-            <header class="w3-container w3-blue">
-                <h1>Header</h1>
-            </header>
-            <div class="w3-container">
-                <p>Lorem ipsum...</p>
-            </div>
-        </div>
         <script src="{{ url_for('static', filename='js/main.js') }}"></script>
     </main>
 
