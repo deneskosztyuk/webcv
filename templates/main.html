@@ -1,59 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>Main Page</title>
-        <link href="https://fonts.googleapis.com" rel="preconnect">
-        <link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
-        <link href="https://fonts.googleapis.com/css2?family=Kanit&display=swap" rel="stylesheet">
-        <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+    <meta charset="UTF-8">
+    <title>Main Page</title>
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+    <link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
+    <link href="https://fonts.googleapis.com/css2?family=Kanit&display=swap" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
 
-    </head>
-    <body>
+<nav class="navbar">
+    <div class="nav-container">
+        <a class="nav-link" href="/">Home</a>
+        <a href="mailto:denes.kosztyuk@gmail.com?subject=Message from WebCV" class="nav-link">Contact Me</a>
+        <a href="{{ url_for('static', filename='media/deneskCV.pdf') }}" class="nav-link" target="_blank">Open CV (PDF)</a>
+    </div>
+</nav>
 
-    <nav class="navbar">
-        <div class="nav-container">
-            <a class="nav-link" href="/">Home</a>
-            <a class="nav-link" href="/projects">My Projects</a>
-            <a href="mailto:denes.kosztyuk@gmail.com?subject=Message from WebCV" class="nav-link">Contact Me</a>
-        </div>
-    </nav>
+<div class="video-container" id="videoHeader">
+    <video autoplay id="headerVideo" loop muted playsinline>
+        <source src="{{ url_for('static', filename='media/earth.mp4') }}" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <div class="video-overlay"></div>
+</div>
 
-    <div class="video-container" id="videoHeader">
-        <video autoplay id="headerVideo" loop muted playsinline>
-            <source src="{{ url_for('static', filename='media/earth.mp4') }}" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-        <div class="video-overlay"></div>
+<main>
+    <div class="content-container">
+        <h1 class="fade-in-title">Denes Kosztyuk</h1>
+        <h2 class="fade-in-subtitle">Computer Systems & Robotics Engineer</h2>
+        <p class="fade-in-description">Welcome to my web portfolio!</p>
     </div>
 
-    <main>
-        <div class="content-container">
-            <h1>Denes Kosztyuk</h1>
-            <h2>Computer Systems & Robotics Engineer</h2>
-            <p>Welcome to my web portfolio.</p>
-            <p>Which is fully powered with Python(Flask)</p>
-        </div>
-
-        <a class="projects-card" href="projects.html">
-            <div class="card-content">
-                <h3>My Projects</h3>
-                <p>Check out my past works and contributions.</p>
-                <!-- You can add an image here if you want -->
-                <!-- <img src="path_to_image" alt="Projects"> -->
+    <div class="panels-container">
+        <section class="panel">
+            <div class="panel-content">
+                <h3 class="panel-title">DSPS - Space Probe Simulator</h3>
+                <p>The "Deep Space Probe Simulator (DSPS)" is a learning tool that simplifies space probe operations for beginners. It uses an ESP32 microcontroller to display real-time telemetry and a Python-based GUI for control. A Wi-Fi system with an HTTP server enables communication, with plans to enhance the UI, create a custom PCB, and add sensors. DSPS promotes hands-on learning in space technology.</p>
+                <p>Technology used: Python, C, C++</p>
             </div>
-        </a>
-        <script src="{{ url_for('static', filename='js/main.js') }}"></script>
-    </main>
+            <div class="panel-image" style="background-image: url('static/media/dspssoftware.png');"></div>
+        </section>
 
-    <footer>
-        <p>
-            <a href="https://www.linkedin.com/in/denes-kosztyuk-766889198/" target="_blank">LinkedIn</a> |
-            <a href="https://github.com/deneskosztyuk" target="_blank">GitHub</a> |
-            <a href="https://leetcode.com/nislaav/" target="_blank">LeetCode</a>
-        </p>
-    </footer>
+        <section class="panel">
+            <div class="panel-content">
+                <h3 class="panel-title">Banking Management System</h3>
+                <p>This Java bank management system uses OOP and data structures to handle user accounts and transactions. The `User` class manages deposits, withdrawals, and stores transaction history in an `ArrayList`, while the `Bank` class uses a `HashMap` to manage accounts. The system supports registration, search, and transactions via a command-line interface, emphasizing efficient data storage and scalable account management.</p>
+                <p>Technology used: Java, OOP, Data Structures and Algorithms</p>
+            </div>
+            <div class="panel-image" style="background-image: url('static/media/bankjava.png');"></div>
+        </section>
 
-    </body>
+        <section class="panel">
+            <div class="panel-content">
+                <h3 class="panel-title">Artificial Intelligence Custom ML Training</h3>
+                <p>This project developed an AI agent using reinforcement learning with Unity ML-Agents and TensorFlow. The agent was trained to navigate towards a target, improving over time by avoiding obstacles through a reward-penalty system. Despite challenges, it showed significant progress in task efficiency, highlighting reinforcement learning's adaptability in complex environments.</p>
+                <p>Technology used: C#, Unity, Machine Learning Agents, TensorFlow</p>
+            </div>
+            <div class="panel-image" style="background-image: url('static/media/machinelearning.png');"></div>
+        </section>
+
+        <section class="panel">
+            <div class="panel-content">
+                <h3 class="panel-title">Self-Navigating Robot</h3>
+                <p>This project developed a self-navigating robot with three IR sensors and a microcontroller, programmed in C++ for autonomous navigation. Using a left-following algorithm, the robot adjusts its movements based on sensor data to avoid obstacles. The project showcases object-oriented programming and data structures in robotics for efficient maze navigation.</p>
+                <p>Technology used: C++, OOP, PCB Design & Manufacturing, 3D Design & Manufacturing</p>
+            </div>
+            <div class="panel-image" style="background-image: url('static/media/robussy.jpg');"></div>
+        </section>
+    </div>
+</main>
+
+<footer>
+    <p>
+        <a href="https://www.linkedin.com/in/denes-kosztyuk-766889198/" target="_blank">LinkedIn</a> |
+        <a href="https://github.com/deneskosztyuk" target="_blank">GitHub</a> |
+        <a href="https://leetcode.com/nislaav/" target="_blank">LeetCode</a>
+    </p>
+</footer>
+
+</body>
 </html>

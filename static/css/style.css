@@ -2,30 +2,83 @@
 html, body {
     margin: 0;
     padding: 0;
-    height: 100%;
+    height: 100vh;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     font-family: 'Kanit', sans-serif;
     color: #ffffff;
 }
 
+main {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    margin-top: 80px; 
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px); /* Optional: Adds a slight upward motion effect */
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Content Container */
+.content-container {
+    position: absolute;
+    top: 100px;
+    right: 5%;
+    width: 40%; 
+    padding: 30px;
+    background-color: rgba(3, 5, 10, 0.0);
+    border-radius: 10px;
+    z-index: 10;
+}
+
+/* Fade-in for each text element */
+.fade-in-title {
+    opacity: 0; /* Initial state: Invisible */
+    animation: fadeIn 1s ease-in forwards; /* 1s fade-in effect */
+    animation-delay: 0.5s; /* Delay for the title */
+}
+
+.fade-in-subtitle {
+    opacity: 0; /* Initial state: Invisible */
+    animation: fadeIn 1s ease-in forwards; /* 1s fade-in effect */
+    animation-delay: 1s; /* Delay for the subtitle */
+}
+
+.fade-in-description {
+    opacity: 0; /* Initial state: Invisible */
+    animation: fadeIn 1s ease-in forwards; /* 1s fade-in effect */
+    animation-delay: 1.5s; /* Delay for the description */
+}
+
 .video-container {
-    position: fixed; /* Changed from relative to fixed */
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    height: 100vh; /* Full viewport height */
+    height: 100vh; /* Ensure the video container is always as tall as the viewport */
     overflow: hidden;
-    z-index: -1; /* Ensure it's behind the content */
+    z-index: -1;
 }
 
 #headerVideo {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
     position: absolute;
-    top: 0;
-    left: 0;
+    top: 50%;
+    left: 50%;
+    width: 100vw; /* Set video width to viewport width */
+    height: 100vh; /* Set video height to viewport height */
+    object-fit: cover; /* Ensures the video covers the whole screen */
+    transform: translate(-50%, -50%); /* Center the video */
+    min-width: 100%;
+    min-height: 100%;
 }
 
 .video-overlay {
@@ -41,7 +94,7 @@ html, body {
 /* PC: Navbar */
 .navbar {
     width: 100%;
-    background-color: rgba(3, 5, 10, 0.6);
+    background-color: rgba(3, 5, 10, 0.4);
     overflow: hidden;
     position: fixed;
     top: 0;
@@ -60,158 +113,176 @@ html, body {
     padding: 10px 15px;
     color: #ffffff;
     margin: 0 10px;
-    transition: background-color 0.3s, color 0.3s;
     border-radius: 5px;
 }
 
-.nav-link:hover {
-    background-color: #006494;
-    color: #ffffff;
-}
-
-/* Mobile: Navbar */
-@media (max-width: 768px) {
-    .navbar {
-        padding: 10px 0;
-    }
-
-    .nav-container {
-        flex-direction: row;
-        justify-content: space-around; /* Distribute space evenly */
-        align-items: center;
-    }
-
-    .nav-link {
-        padding: 12px 20px;
-        margin: 5px 0;
-        font-size: 1em;
-    }
-}
-
-/* PC: Main Content and Titles */
-h1 {
-    font-size: 4rem;
-}
-
-h2 {
-    font-size: 2rem;
-}
-
-.content-container {
-    position: absolute;
-    top: 50%;
-    left: 60%;
-    transform: translate(-30%, -50%);
-    text-align: left;
-    z-index: 3;
-    color: #fff;
-    pointer-events: none;
-}
-
-/* Mobile: Main Content and Titles */
-@media (max-width: 768px) {
-    h1 {
-        font-size: 2.5rem;
-    }
-
-    h2 {
-        font-size: 1.5rem;
-    }
-
-    .content-container {
-        position: static;
-        padding: 20px;
-        padding-top: 200px;
-        text-align: center;
-        transform: none;
-        left: 0;
-    }
-}
-
-/* Additional styles for very small screens */
-@media (max-width: 480px) {
-    h1 {
-        font-size: 2rem;
-    }
-
-    h2 {
-        font-size: 1.2rem;
-    }
-}
-
-/* PC: Projects Card */
-.projects-card {
-    display: block;
-    position: absolute;
-    left: 15%;
-    top: 60%;
-    transform: translateY(-50%);
-    background-color: #fff;
-    color: #03050A;
-    text-decoration: none;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    width: 250px;
+/* Panels */
+.panel {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0;
     padding: 20px;
-    z-index: 2;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background-color: rgba(0, 0, 0, 0.4);
+    border-radius: 10px;
+    overflow: hidden;
+    opacity: 0;
+    animation: fadeIn 1s ease-in forwards;
+    animation-delay: 1.5s;
+    transform-origin: center;
 }
 
-.projects-card:hover {
-    transform: translateY(-50%) scale(1.05);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-    color: #03050A;
+.panel.animated {
+    opacity: 1; 
 }
 
-.card-content h3 {
-    margin: 0;
-    color: #03050A;
-    font-size: 1.5rem;
+/* Panels container */
+.panels-container {
+    position: center;
+    width: 90%;
+    padding: 70px;
+    margin-top: 300px; 
 }
 
-.card-content p {
-    color: #03050A;
+.panel-content {
+    flex: 1;
+    padding: 0 20px;
+    max-height: none; 
+    overflow: visible; 
 }
 
-/* Mobile: Projects Card */
-@media (max-width: 768px) {
-    .projects-card {
-        position: static;
-        margin: 20px;
-        margin-top: 150px;
-        width: auto;
-    }
+.panel-image {
+    flex: 0 0 50%; 
+    background-size: cover; 
+    background-position: center;
+    background-repeat: no-repeat; 
+    border-radius: 5px;
+}
+
+.panel:nth-child(odd) {
+    flex-direction: row-reverse; 
+}
+
+.panel:nth-child(even) {
+    flex-direction: row; 
 }
 
 /* PC and Mobile: Footer */
 footer {
     background-color: #006494;
-    padding: 1px 0; /* Adjust padding as needed */
+    padding: 1px 0;
     width: 100%;
-    height: 5%;
     display: flex;
     justify-content: center;
     align-items: center;
-    position: absolute; /* Change to absolute */
-    bottom: 0; /* Position at the bottom */
+    margin-top: auto;
+    position: relative; 
+    clear: both;
+    bottom: 0;
     left: 0;
 }
-
 
 footer a {
     color: #ffffff;
     text-decoration: none;
-    transition: color 0.3s ease;
+    margin: 0 10px;
 }
 
-footer a:hover {
-    color: #03050A;
-}
-
-/* Mobile: Footer Adjustments */
+/* Mobile adjustments */
 @media (max-width: 768px) {
+    html, body {
+        width: 100%; /* Ensures no extra width */
+        overflow-x: hidden; /* Prevent horizontal scrolling */
+        margin: 0; /* Remove any default margins */
+        padding: 0; /* Remove any default padding */
+    }
+
+    main {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        margin-top: 60px; /* Adjusted for fixed navbar */
+        width: 100%; /* Ensure main content doesn't overflow */
+        box-sizing: border-box; /* Include padding/border in width */
+    }
+
+    .navbar {
+        position: fixed;
+        top: 0;
+        width: 100%; /* Ensure the navbar is full width */
+        background-color: rgba(3, 5, 10, 0.8);
+    }
+
+    .nav-container {
+        flex-direction: row;
+        justify-content: space-around;
+        padding: 10px 0;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .nav-link {
+        padding: 8px 12px;
+        margin: 2px;
+        font-size: 0.9em;
+    }
+
+    .content-container {
+        position: relative; /* Prevent overlap */
+        top: 0;
+        right: 0;
+        width: 100%; /* Ensure container is full width */
+        margin: 20px auto;
+        padding: 20px;
+        text-align: center; /* Center text for readability */
+        background-color: rgba(3, 5, 10, 0.0);
+        box-sizing: border-box; /* Include padding in width */
+    }
+
+    .panels-container {
+        width: 100%; /* Prevent horizontal overflow */
+        padding: 0 20px;
+        margin-top: 20px;
+        box-sizing: border-box;
+    }
+
+    .panel {
+        flex-direction: column;
+        margin: 20px 0;
+        width: 100%; /* Prevent panel overflow */
+        box-sizing: border-box;
+    }
+
+    .panel-image {
+        width: 100%; /* Make sure the image fits within the panel */
+        height: 200px;
+        flex: none;
+        order: -1; /* Ensures image is always on top */
+    }
+
+    .panel-content {
+        padding: 20px;
+        max-height: none;
+        overflow: visible;
+        box-sizing: border-box; /* Ensure padding doesn’t cause overflow */
+    }
+
+    .panel:nth-child(odd),
+    .panel:nth-child(even) {
+        flex-direction: column;
+    }
+
+    h1 {
+        font-size: 1.8em;
+    }
+
+    h2 {
+        font-size: 1.4em;
+    }
+
     footer {
-        height: auto;
-        padding: 5px;
+        position: relative;
+        padding: 10px 0;
+        width: 100%; /* Ensure footer is full width */
+        box-sizing: border-box;
     }
 }
